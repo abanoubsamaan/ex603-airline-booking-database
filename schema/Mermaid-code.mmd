@@ -1,0 +1,33 @@
+erDiagram
+    passengers ||--o{ bookings : owns
+    flights ||--o{ bookings : has
+    flights ||--o{ flight_routes : includes
+    airports ||--o{ flight_routes : "appears in"
+
+    passengers {
+        BIGINT passenger_id PK
+        VARCHAR name
+    }
+
+    flights {
+        BIGINT flight_id PK
+        VARCHAR name
+        BOOLEAN is_active
+        INTEGER available_seats
+    }
+
+    bookings {
+        BIGINT booking_id PK
+        BIGINT passenger_id FK
+        BIGINT flight_id FK
+    }
+
+    airports {
+        BIGINT airport_id PK
+        VARCHAR name
+    }
+
+    flight_routes {
+        BIGINT flight_id PK, FK
+        BIGINT airport_id PK, FK
+    }
