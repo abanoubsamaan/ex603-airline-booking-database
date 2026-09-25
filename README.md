@@ -17,3 +17,10 @@ The platform should be able to answer questions such as which passengers are boo
 ## ERD
 
 ![Airline Booking ERD](./schema/ERD.png)
+
+---
+## Schema
+
+The schema contains five tables: `passengers` stores passenger information, `flights` stores flight information, `bookings` connects passengers to flights, `airports` stores airport information, and `flight_routes` connects flights to airports.
+
+Each table has its own primary key, and `BIGINT` is used for the identifiers. The `bookings` table uses foreign keys to connect passengers and flights, while `flight_routes` is a junction table with a composite primary key of `flight_id` and `airport_id` to prevent duplicate flight-airport relationships. The foreign keys also use different `ON DELETE` choices based on how the related data should be handled.
